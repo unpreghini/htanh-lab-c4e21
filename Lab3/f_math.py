@@ -1,44 +1,24 @@
 from random import randint, choice
+from calc_function import calculate
 
-x = randint(1, 9)
-y = randint(1, 9)
+x = randint(0, 9)
+y = randint(0, 9)
 op = choice(["+", "-", "*", "/"])
-r = randint(1, 18)
+error = randint(-1, 1)
 
-sum_ = x + y
-minus = x - y
-product = x * y
-remain = x // y
+r = calculate(x, y, op) + error
 
-print("*" * 10)
-print(x, op, y, "=", r, sep=" ")
-print("*" * 10)
+print(x, op, y, "=", r)
 
-if sum_ == r:
-    correct = True
-elif minus == r:
-    correct = True
-elif product == r:
-    correct = True
-elif remain == r:
-    correct = True
+user_answer = input("(Y/N)?: ").upper()
+
+if calculate(x, y, op) == r:
+    if user_answer == "Y":
+        print("Yay")
+    elif user_answer == "N":
+        print("Nah")
 else:
-    correct = False
-
-choice_ = input("(T/F)?: ").upper()
-
-if correct is True:
-    if choice_ == "T":
-        print("Hell yeah")
-    elif choice_ == "F":
-        print("Wrong")
-    else:
-        print("Invalid input")
-
-else:
-    if choice_ == "F":
-        print("Hell yeah")
-    elif choice_ == "T":
-        print("Wrong")
-    else:
-        print("Invalid input")
+    if user_answer == "Y":
+        print("Nah")
+    elif user_answer == "N":
+        print("Yay")
