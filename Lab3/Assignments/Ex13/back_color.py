@@ -47,6 +47,7 @@ def mouse_press(x, y, text, color, quiz_type):
         rect = [shape['rect'] for shape in shapes if shape['text'] == text][0]
     else:
         rect = [shape['rect'] for shape in shapes if shape['color'] == color][0]
+
     if is_inside(point, rect):
         return True
     else:
