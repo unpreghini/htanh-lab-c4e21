@@ -23,5 +23,4 @@
 
 # How to use function from a different file other than our currently working file?
 - Use `import` function
-- For example, you want to import function `calculate` from file `calc.py`: ```from calc import calculate`
-
+- For example, you want to import function `calculate` from file `calc.py`: ```from calc import calculate```
