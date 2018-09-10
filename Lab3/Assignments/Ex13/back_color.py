@@ -58,5 +58,5 @@ def mouse_press(x, y, name, color, quiz_type):
     else:
         color_ = colors.index(color)
         rectangle = shapes[color_]['rect']
-    mouse_check = is_inside(point, rectangle)
-    return mouse_check
+    result = is_inside(point, rectangle)
+    return result
