@@ -24,31 +24,39 @@ shapes = [
     }
 ]
 
+names = []
+colors = []
+for shape in shapes:
+    shape_name = shape['text'].upper()
+    shape_color = shape['color']
+    names.append(shape_name)
+    colors.append(shape_color)
+
 
 def get_shapes():
     return shapes
 
 
 def generate_quiz():
-    text = choice([shape['text'].upper() for shape in shapes])
-    color = choice([shape['color'] for shape in shapes])
+    name = choice(names)
+    color = choice(colors)
     quiz_type = randint(0, 1)
     return [
-                text,
+                name,
                 color,
                 quiz_type  # randint(0, 1) # 0 : meaning, 1: color
             ]
 
 
-def mouse_press(x, y, text, color, quiz_type):
+def mouse_press(x, y, name, color, quiz_type):
     point = [x, y]
-    text = text.lower()
-    if quiz_type == 0:
-        rect = [shape['rect'] for shape in shapes if shape['text'] == text][0]
-    else:
-        rect = [shape['rect'] for shape in shapes if shape['color'] == color][0]
 
-    if is_inside(point, rect):
-        return True
+    if quiz_type == 0:
+        name_ = names.index(name)
+        rectangle = shapes[name_]['rect']
+
     else:
-        return False
+        color_ = colors.index(color)
+        rectangle = shapes[color_]['rect']
+    mouse_check = is_inside(point, rectangle)
+    return mouse_check
